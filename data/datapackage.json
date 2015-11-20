@@ -1,0 +1,87 @@
+{
+  "sources": {
+    "monthly": "http://www.eia.gov/dnav/ng/hist/rngwhhdm.htm",
+    "annual": "http://www.eia.gov/dnav/ng/hist/rngwhhdA.htm",
+    "daily": "http://www.eia.gov/dnav/ng/hist/rngwhhdD.htm",
+    "weekly": "http://www.eia.gov/dnav/ng/hist/rngwhhdW.htm"
+  },
+  "description": "Contains Henry Hub gas prices s for different frequencies",
+  "name": "gas_prices",
+  "title": "Henry Hub gas prices",
+  "sources": [
+    {
+      "path": "data/month.csv"
+    },
+    {
+      "path": "data/day.csv"
+    },
+    {
+      "path": "data/week.csv"
+    },
+    {
+      "path": "data/annual.csv"
+    }
+  ],
+  "resources": [
+    {
+      "name": "natural-gas-prices-daily",
+      "path": "data/natural-gas-prices-daily.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "Date",
+            "type": "date",
+            "description": ""
+          },
+          {
+            "name": "Price",
+            "type": "number",
+            "description": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "natural-gas-prices-weekly",
+      "path": "data/natural-gas-prices-weekly.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "Date",
+            "type": "date",
+            "description": ""
+          },
+          {
+            "name": "Price",
+            "type": "number",
+            "description": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "natural-gas-prices-monthly",
+      "path": "data/natural-gas-prices-monthly.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "Date",
+            "type": "date",
+            "description": ""
+          },
+          {
+            "name": "Price",
+            "type": "number",
+            "description": ""
+          }
+        ]
+      }
+    }
+  ]
+}
