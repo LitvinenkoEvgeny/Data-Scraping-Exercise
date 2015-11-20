@@ -26,6 +26,7 @@ class Day(object):
         self.filename = 'day.csv'
         self.site = requests.get(self.url)
         self.body = html.fromstring(self.site.content)
+        self.head = ['Week of', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 
     def parse_data(self):
         trs = self.body.xpath('//table[@summary]//tr')[1:]
@@ -43,6 +44,7 @@ class Day(object):
             all_data.append(data)
 
         all_data = [array for array in all_data if array[0]]
+        all_data.insert(0, self.head)
         write_to_csv(self.filename, all_data)
 
     def clean_empty(self, elem):
@@ -68,6 +70,11 @@ class Week(object):
         self.filename = 'week.csv'
         self.site = requests.get(self.url)
         self.body = html.fromstring(self.site.content)
+        self.head = ['Year-month', 'Week1 End Date', 'Week1 Value',
+                     'Week2 End Date', 'Week2 Value',
+                     'Week3 End Date', 'Week3 Value',
+                     'Week4 End Date', 'Week4 Value',
+                     'Week5 End Date', 'Week5 Value']
 
     def clean_empty(self, elem):
         if len(elem) > 0:
@@ -96,6 +103,7 @@ class Week(object):
             all_data.append(data)
 
         all_data = [data for data in all_data if data[0]]
+        all_data.insert(0, self.head)
 
         write_to_csv(self.filename, all_data)
 
@@ -112,6 +120,12 @@ class Month(object):
         self.filename = 'month.csv'
         self.site = requests.get(self.url)
         self.body = html.fromstring(self.site.content)
+        self.head = ['Year', 'Jan', 'Feb',
+                     'Mar', 'Apr',
+                     'May', 'Jun',
+                     'Jul', 'Aug',
+                     'Sep', 'Oct',
+                     'Nov', 'Dec']
 
     def parse_data(self):
         trs = self.body.xpath('//table[@cellpadding="2"]/tr')[1:]
@@ -137,6 +151,8 @@ class Month(object):
             all_data.append(data)
 
         all_data = [array for array in all_data if array[0]]
+        all_data.insert(0, self.head)
+
         write_to_csv(self.filename, all_data)
 
     def clean_empty(self, elem):
